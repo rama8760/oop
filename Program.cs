@@ -1,105 +1,44 @@
 ﻿using System;
 
-class BankAccount
+class Car
 {
-    private string accountNumber;
-    private string accountHolderName;
-    private double balance;
-    private string accountType;
-    private string branchName;
-
-    public string AccountNumber
-    {
-        get { return accountNumber; }
-        set { accountNumber = value; }
-    }
-
-    public string AccountHolderName
-    {
-        get { return accountHolderName; }
-        set { accountHolderName = value; }
-    }
-
-    public double Balance
-    {
-        get { return balance; }
-        set
-        {
-            if (value >= 0)
-                balance = value;
-            else
-                Console.WriteLine("Error: Balance cannot be negative");
-        }
-    }
-
-    public string AccountType
-    {
-        get { return accountType; }
-        set { accountType = value; }
-    }
-
-    public string BranchName
-    {
-        get { return branchName; }
-        set { branchName = value; }
-    }
-
-    public BankAccount(string accNum, string holder, double bal, string type, string branch)
-    {
-        accountNumber = accNum;
-        accountHolderName = holder;
-
-        if (bal >= 0)
-            balance = bal;
-        else
-        {
-            balance = 0;
-            Console.WriteLine("Error: Initial balance cannot be negative");
-        }
-
-        accountType = type;
-        branchName = branch;
-    }
-
    
-    ~BankAccount()
+    private string brand;
+    private string model;
+    private int year;
+
+    public string Brand
     {
-        Console.WriteLine("BankAccount object destroyed");
+        get { return brand; }
+        set { brand = value; }
     }
 
-    public void Deposit(double amount)
+    public string Model
     {
-        if (amount > 0)
-        {
-            balance += amount;
-            Console.WriteLine("Deposit successful");
-        }
-        else
-        {
-            Console.WriteLine("Error: Invalid deposit amount");
-        }
+        get { return model; }
+        set { model = value; }
     }
 
-    public void Withdraw(double amount)
+    public int Year
     {
-        if (amount <= balance)
-        {
-            balance -= amount;
-            Console.WriteLine("Withdraw successful");
-        }
-        else
-        {
-            Console.WriteLine("Error: Insufficient balance");
-        }
+        get { return year; }
+        set { year = value; }
     }
 
-    public void DisplayInfo()
+
+    public void Start()
     {
-        Console.WriteLine("Account Number: " + accountNumber);
-        Console.WriteLine("Account Holder: " + accountHolderName);
-        Console.WriteLine("Balance: " + balance);
-        Console.WriteLine("Account Type: " + accountType);
-        Console.WriteLine("Branch Name: " + branchName);
+        Console.WriteLine("The car is starting");
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine("The car is driving");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine("The car has stopped");
     }
 }
 
@@ -107,25 +46,37 @@ class Program
 {
     static void Main(string[] args)
     {
-   
-        BankAccount account1 = new BankAccount(
-            "A1001", "Ali Ahmad", 100, "Saving", "Amman"
-        );
+      
+        Car car1 = new Car();
+        car1.Brand = "Toyota";
+        car1.Model = "Corolla";
+        car1.Year = 2020;
 
-        BankAccount account2 = new BankAccount(
-            "A2002", "Sara Khaled", 50, "Checking", "Irbid"
-        );
+        Car car2 = new Car();
+        car2.Brand = "BMW";
+        car2.Model = "X5";
+        car2.Year = 2023;
 
-        
-        account1.Deposit(300);
-        account1.Withdraw(200);
-        account1.DisplayInfo();
+     
+        car1.Start();
+        car1.Drive();
+        car1.Stop();
 
         Console.WriteLine();
 
-        account2.Withdraw(800);  
-        account2.Deposit(150);
-        account2.DisplayInfo();
+        car2.Start();
+        car2.Drive();
+        car2.Stop();
+
+        Console.WriteLine("\nCar 1:");
+        Console.WriteLine("Brand: " + car1.Brand);
+        Console.WriteLine("Model: " + car1.Model);
+        Console.WriteLine("Year: " + car1.Year);
+
+        Console.WriteLine("\nCar 2 :");
+        Console.WriteLine("Brand: " + car2.Brand);
+        Console.WriteLine("Model: " + car2.Model);
+        Console.WriteLine("Year: " + car2.Year);
     }
 }
 
